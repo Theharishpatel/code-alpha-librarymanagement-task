@@ -26,10 +26,12 @@ router.post('/', async (req, res) => {
   });
 
   try {
-    const newBook = await book.save();
+    const newBook = new Book(req.body);
+    await book.save();
     res.status(201).json(newBook);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    console.error("Error saving book:", err);
+    res.status(500).json({ message: "Failed to add book" });
   }
 });
 

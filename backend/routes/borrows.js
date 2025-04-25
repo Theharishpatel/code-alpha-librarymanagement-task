@@ -1,3 +1,8 @@
+const express = require('express');
+const router = express.Router();
+
+
+
 router.post('/', async (req, res) => {
   try {
     // Validate request
@@ -31,3 +36,5 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+module.exports = router ;
